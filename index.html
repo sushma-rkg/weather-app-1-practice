@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #111827;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      background: #1f2937;
+      border-radius: 16px;
+      padding: 32px 24px;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Coral radial glow */
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(255,107,87,0.18) 0%, transparent 70%);
+      pointer-events: none;
+      border-radius: 50%;
+    }
+
+    .app-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #fff;
+      position: relative;
+    }
+
+    .search-row {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+      position: relative;
+    }
+
+    .search-input {
+      flex: 1;
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 15px;
+      padding: 11px 14px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .search-input::placeholder { color: #4b5563; }
+
+    .search-input:focus {
+      border-color: #ff6b57;
+    }
+
+    .search-btn {
+      background: #ff6b57;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 11px 22px;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(255,107,87,0.45);
+      letter-spacing: 0.5px;
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="app-title">Weather App</h1>
+    <div class="search-row">
+      <input class="search-input" type="text" placeholder="Enter a city…">
+      <button class="search-btn">Search</button>
+    </div>
+  </div>
+</body>
+</html>

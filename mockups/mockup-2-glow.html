@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 2 — Glow</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #111827;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #4b5563;
+      margin-bottom: 6px;
+    }
+    .design-name {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+    .design-name span { color: #ff6b57; }
+
+    .states {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .states { grid-template-columns: 1fr; }
+    }
+
+    .state-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #4b5563;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    /* App frame with coral glow */
+    .app {
+      background: #1f2937;
+      border-radius: 16px;
+      padding: 32px 24px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* The coral glow behind the card area */
+    .app::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(255,107,87,0.18) 0%, transparent 70%);
+      pointer-events: none;
+      border-radius: 50%;
+    }
+
+    .app-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #fff;
+      align-self: flex-start;
+      position: relative;
+    }
+
+    /* Search row */
+    .search-row {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+      position: relative;
+    }
+    .search-input {
+      flex: 1;
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 15px;
+      padding: 11px 14px;
+      outline: none;
+    }
+    .search-input::placeholder { color: #4b5563; }
+    .search-btn {
+      background: #ff6b57;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 11px 22px;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(255,107,87,0.45);
+      letter-spacing: 0.5px;
+    }
+
+    /* Loading */
+    .loading {
+      font-size: 14px;
+      color: #ff6b57;
+      letter-spacing: 1px;
+      opacity: 0.85;
+      position: relative;
+    }
+
+    /* Weather card */
+    .weather-card {
+      width: 100%;
+      background: #111827;
+      border: 1px solid #ff6b57;
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 0 24px rgba(255,107,87,0.15), inset 0 0 24px rgba(255,107,87,0.04);
+      position: relative;
+    }
+    .weather-emoji {
+      font-size: 44px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .weather-city {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .weather-country {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+    .weather-temp {
+      font-size: 56px;
+      font-weight: 800;
+      color: #ff6b57;
+      line-height: 1;
+      margin-bottom: 8px;
+      text-shadow: 0 0 30px rgba(255,107,87,0.4);
+    }
+    .weather-desc {
+      font-size: 14px;
+      color: #9ca3af;
+      margin-bottom: 18px;
+    }
+    .weather-stats {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      border-top: 1px solid #1f2937;
+      padding-top: 14px;
+    }
+    .stat {
+      font-size: 14px;
+      color: #d1d5db;
+    }
+    .stat span {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4b5563;
+      margin-bottom: 3px;
+    }
+
+    /* Loading state card */
+    .loading-card {
+      width: 100%;
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 14px;
+      padding: 28px 20px;
+      text-align: center;
+      position: relative;
+    }
+    .loading-text {
+      font-size: 15px;
+      color: #ff6b57;
+      letter-spacing: 2px;
+    }
+    .loading-bar {
+      margin-top: 14px;
+      height: 3px;
+      background: #1f2937;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .loading-fill {
+      height: 100%;
+      width: 55%;
+      background: linear-gradient(90deg, transparent, #ff6b57, transparent);
+      border-radius: 3px;
+    }
+
+    /* Error message */
+    .error-msg {
+      width: 100%;
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 14px;
+      padding: 22px 20px;
+      text-align: center;
+      position: relative;
+    }
+    .error-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .error-msg p {
+      font-size: 14px;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+    .error-msg strong { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <p class="page-title">Design Mockup 2 of 3</p>
+  <h1 class="design-name"><span>Glow</span></h1>
+
+  <div class="states">
+
+    <!-- STATE 1: Before searching -->
+    <div>
+      <p class="state-label">Before Searching</p>
+      <div class="app">
+        <div class="app-title">Weather App</div>
+        <div class="search-row">
+          <input class="search-input" type="text" placeholder="Enter a city…" disabled>
+          <button class="search-btn">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATE 2: Weather result (with Loading shown above card as bonus) -->
+    <div>
+      <p class="state-label">Weather Result</p>
+      <div class="app">
+        <div class="app-title">Weather App</div>
+        <div class="search-row">
+          <input class="search-input" type="text" value="Barcelona" disabled>
+          <button class="search-btn">Search</button>
+        </div>
+        <div class="weather-card">
+          <span class="weather-emoji">⛅</span>
+          <div class="weather-city">Barcelona</div>
+          <div class="weather-country">Spain</div>
+          <div class="weather-temp">24°C</div>
+          <div class="weather-desc">Partly cloudy</div>
+          <div class="weather-stats">
+            <div class="stat"><span>Humidity</span>68%</div>
+            <div class="stat"><span>Wind</span>14 km/h NW</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATE 3: City not found -->
+    <div>
+      <p class="state-label">City Not Found</p>
+      <div class="app">
+        <div class="app-title">Weather App</div>
+        <div class="search-row">
+          <input class="search-input" type="text" value="Londan" disabled>
+          <button class="search-btn">Search</button>
+        </div>
+        <div class="error-msg">
+          <div class="error-icon">🔍</div>
+          <p><strong>We couldn't find that city.</strong><br>Please check the spelling and try again.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Loading state shown separately below -->
+  <div style="max-width:360px; margin: 48px auto 0;">
+    <p class="state-label">Loading…</p>
+    <div class="app">
+      <div class="app-title">Weather App</div>
+      <div class="search-row">
+        <input class="search-input" type="text" value="Barcelona" disabled>
+        <button class="search-btn">Search</button>
+      </div>
+      <div class="loading-card">
+        <div class="loading-text">Loading…</div>
+        <div class="loading-bar"><div class="loading-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

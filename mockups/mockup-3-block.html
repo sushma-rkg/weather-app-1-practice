@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 — Block</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0d;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 6px;
+    }
+    .design-name {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+    .design-name span { color: #ff6b57; }
+
+    .states {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .states { grid-template-columns: 1fr; }
+    }
+
+    .state-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #444;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    /* App frame */
+    .app {
+      background: #161616;
+      padding: 32px 24px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid #222;
+    }
+
+    .app-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff6b57;
+      align-self: flex-start;
+    }
+
+    /* Search row */
+    .search-row {
+      display: flex;
+      width: 100%;
+      gap: 0;
+    }
+    .search-input {
+      flex: 1;
+      background: #0d0d0d;
+      border: 1px solid #2a2a2a;
+      border-right: none;
+      color: #fff;
+      font-size: 15px;
+      padding: 12px 14px;
+      outline: none;
+    }
+    .search-input::placeholder { color: #444; }
+    .search-btn {
+      background: #ff6b57;
+      color: #fff;
+      border: none;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 22px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Weather card — two-tone block */
+    .weather-card {
+      width: 100%;
+      overflow: hidden;
+    }
+    .card-top {
+      background: #ff6b57;
+      padding: 24px 20px 20px;
+      text-align: center;
+    }
+    .weather-emoji {
+      font-size: 44px;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .weather-city {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+    .weather-country {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+    }
+    .card-bottom {
+      background: #1a1a1a;
+      padding: 20px;
+    }
+    .weather-temp {
+      font-size: 56px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .weather-desc {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 12px;
+    }
+    .weather-stats {
+      display: flex;
+      gap: 0;
+    }
+    .stat {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      border-right: 1px solid #2a2a2a;
+      padding-right: 16px;
+      margin-right: 16px;
+    }
+    .stat:last-child {
+      border-right: none;
+      padding-right: 0;
+      margin-right: 0;
+    }
+    .stat span {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #555;
+      margin-bottom: 4px;
+      font-weight: 400;
+    }
+
+    /* Error message */
+    .error-msg {
+      width: 100%;
+      border-left: 4px solid #ff6b57;
+      background: #1a1a1a;
+      padding: 18px 16px;
+    }
+    .error-headline {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ff6b57;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .error-msg p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="page-title">Design Mockup 3 of 3</p>
+  <h1 class="design-name"><span>Block</span></h1>
+
+  <div class="states">
+
+    <!-- STATE 1: Before searching -->
+    <div>
+      <p class="state-label">Before Searching</p>
+      <div class="app">
+        <div class="app-title">Weather App</div>
+        <div class="search-row">
+          <input class="search-input" type="text" placeholder="Enter a city…" disabled>
+          <button class="search-btn">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATE 2: Weather result -->
+    <div>
+      <p class="state-label">Weather Result</p>
+      <div class="app">
+        <div class="app-title">Weather App</div>
+        <div class="search-row">
+          <input class="search-input" type="text" value="Barcelona" disabled>
+          <button class="search-btn">Search</button>
+        </div>
+        <div class="weather-card">
+          <div class="card-top">
+            <span class="weather-emoji">⛅</span>
+            <div class="weather-city">Barcelona</div>
+            <div class="weather-country">Spain</div>
+          </div>
+          <div class="card-bottom">
+            <div class="weather-temp">24°C</div>
+            <div class="weather-desc">Partly cloudy</div>
+            <div class="weather-stats">
+              <div class="stat"><span>Humidity</span>68%</div>
+              <div class="stat"><span>Wind</span>14 km/h NW</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATE 3: City not found -->
+    <div>
+      <p class="state-label">City Not Found</p>
+      <div class="app">
+        <div class="app-title">Weather App</div>
+        <div class="search-row">
+          <input class="search-input" type="text" value="Londan" disabled>
+          <button class="search-btn">Search</button>
+        </div>
+        <div class="error-msg">
+          <div class="error-headline">City not found</div>
+          <p>We couldn't find that city. Please check the spelling and try again.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
